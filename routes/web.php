@@ -15,6 +15,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
     Route::get('/customer', CustomerIndex::class)->name('customer.index');
+
 });

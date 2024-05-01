@@ -28,6 +28,7 @@ class CustomerForm extends Form
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
+
         $this->name = $customer->name;
         $this->email = $customer->email;
         $this->address = $customer->address;
@@ -46,6 +47,7 @@ class CustomerForm extends Form
     public function update()
     {
 
-        $this->customer->update($this->except('customer'));
+        $this->customer->update($this->except(['customer']));
+
     }
 }

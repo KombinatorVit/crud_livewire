@@ -1,9 +1,8 @@
 <div>
 
 
-    <x-select  wire:model.live="pagination" class="text-sm mt-4 ">
-
-        <option value="5">5</option>
+   <x-select  wire:model.live="pagination" class="text-sm mt-4">
+        <option value="5" >5</option>
         <option value="10">10</option>
         <option value="25">25</option>
         <option value="50">50</option>
@@ -37,7 +36,9 @@ ID</th>
         </tr>
         <tr>
             <td class="p-2 border border-spacing-1"></td>
-            <td class="p-2 border border-spacing-1"></td>
+            <td class="p-2 border border-spacing-1 text-xs" >
+
+            </td>
             <td class="p-2 border border-spacing-1"> <x-input type="search" wire:model.live="form.id" class="w-full text-sm"/> </td>
             <td class="p-2 border border-spacing-1"> <x-input type="search" wire:model.live="form.name" class="w-full text-sm"/> </td>
             <td class="p-2 border border-spacing-1"> <x-input type="search" wire:model.live="form.email" class="w-full text-sm"/> </td>
@@ -52,6 +53,11 @@ ID</th>
                 <tr>
                     <td class="p-2  border border-spacing-1 text-center">{{ $loop->iteration }}</td>
                     <td class="p-2  border border-spacing-1">
+                        <x-button type="button" @click="$dispatch('customer-edit', {
+                       id : '{{$customer->id}}'})">
+                            Edit
+                        </x-button>
+                        <x-danger-button @click="$dispatch('customer-delete', {id : '{{$customer->id}}', text : '{{$customer->name}}'})"> Delete</x-danger-button>
                     </td>
                     <td class="p-2  border border-spacing-1">{{ $customer->id }}</td>
                     <td class="p-2  border border-spacing-1 text-center">{{ $customer->name }}</td>

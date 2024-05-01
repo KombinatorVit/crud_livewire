@@ -16,13 +16,18 @@ class CustomerTable extends Component
 
     public CustomerForm $form;
 
+
     public $pagination = 5;
     public $sortBy = 'customers.id';
     public $sortDirection = 'desc';
 
+
+
     #[On('dispatch-customer-create-save')]
+    #[On('dispatch-customer-create-edit')]
     public function render()
     {
+
         return view('livewire.customer-table', [
             'customers' => Customer::where('id', 'like', '%' . $this->form->id . '%')->
             where('name', 'like', '%' . $this->form->name . '%')->

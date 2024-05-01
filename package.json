@@ -17,6 +17,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "toastify-js": "^1.12.0"
+        "lodash.castarray": "^4.4.0",
+        "toastify-js": "^1.12.0",
+        "tom-select": "^2.3.1"
     }
 }

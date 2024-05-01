@@ -25,6 +25,7 @@ class CustomerTable extends Component
 
     #[On('dispatch-customer-create-save')]
     #[On('dispatch-customer-create-edit')]
+    #[On('dispatch-customer-create-delete')]
     public function render()
     {
 

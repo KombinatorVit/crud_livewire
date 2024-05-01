@@ -57,7 +57,7 @@ ID</th>
                        id : '{{$customer->id}}'})">
                             Edit
                         </x-button>
-                        <x-danger-button @click="$dispatch('customer-delete', {id : '{{$customer->id}}', text : '{{$customer->name}}'})"> Delete</x-danger-button>
+                        <x-danger-button @click="$dispatch('customer-delete', {id : '{{$customer->id}}', name : '{{$customer->name}}'})"> Delete</x-danger-button>
                     </td>
                     <td class="p-2  border border-spacing-1">{{ $customer->id }}</td>
                     <td class="p-2  border border-spacing-1 text-center">{{ $customer->name }}</td>

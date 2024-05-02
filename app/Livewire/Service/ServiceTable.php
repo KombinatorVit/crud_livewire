@@ -31,7 +31,13 @@ class ServiceTable extends Component
     {
 
         return view('livewire.service.service-table', [
-            'data' => Service::join('customers', 'customers.id' , 'services.customer_id')->
+            'data' => Service::select(
+                'services.id as id',
+                'customers.name as customer',
+                'cars.name as car',
+                'types.name as type'
+            )
+            ->join('customers', 'customers.id' , 'services.customer_id')->
             join('types', 'types.id' , 'services.type_id')->
             join('cars', 'cars.id' , 'types.car_id')->
             where('services.id', 'like', '%' . $this->form->id . '%')->

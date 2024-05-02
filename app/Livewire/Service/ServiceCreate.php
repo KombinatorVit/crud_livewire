@@ -16,21 +16,37 @@ class ServiceCreate extends Component
     {
 
         $this->validate();
-        $checkForm = $this->form->store();
 
-        is_null($checkForm) ? $this->dispatch('notify', title: 'success', message: 'Success')
-            : $this->dispatch('notify', title: 'error', message: 'Failed');
+        try {
+            $this->form->store();
+            $this->dispatch('notify', title: 'success', message: 'Success');
 
-        $this->dispatch('dispatch-service-create-save')->to(ServiceTable::class);
+            $this->dispatch('dispatch-service-create-save')->to(ServiceTable::class);
+
+            $this->dispatch('set-reset');
+
+
+        } catch (\Exception $e) {
+            $this->dispatch('notify', title: 'error', message: 'Failed');
+
+        }
 
 
     }
 
+    public function carChange()
+    {
+        $this->dispatch('set-type-create', id: $this->form->type, data: $this->form->setType());
 
+        $this->resetErrorBag();
+    }
 
 
     public function render()
     {
+        $this->dispatch('set-customer-create', id: $this->form->type, data: $this->form->setCustomer());
+        $this->dispatch('set-car-create', id: $this->form->car, data: $this->form->setCar());
+
         return view('livewire.service.service-create');
     }
 }

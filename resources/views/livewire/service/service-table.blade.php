@@ -60,9 +60,9 @@ Customer
                         <x-danger-button @click="$dispatch('service-delete', {id : '{{$service->id}}', name : '{{$service->name}}'})"> Delete</x-danger-button>
                     </td>
                     <td class="p-2  border border-spacing-1">{{ $service->id }}</td>
-                    <td class="p-2  border border-spacing-1 text-center">{{ $service->customer->name }}</td>
-                    <td class="p-2 border border-spacing-1">{{ $service->type->car->name }}</td>
-                    <td class="p-2 border border-spacing-1">{{ $service->type->name }}</td>
+                    <td class="p-2  border border-spacing-1 text-center">{{ $service->customer}}</td>
+                    <td class="p-2 border border-spacing-1">{{ $service->car }}</td>
+                    <td class="p-2 border border-spacing-1">{{ $service->type }}</td>
                 </tr>
             @endforeach
         @endisset

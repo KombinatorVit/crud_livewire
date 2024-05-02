@@ -18,19 +18,41 @@ class ServiceEdit extends Component
     public function set_service(Service $id)
     {
         $this->form->setService($id);
+
+        $this->dispatch('set-customer-edit', id: $this->form->customer, data: $this->form->setCustomer());
+        $this->dispatch('set-car-edit', id: $this->form->car, data: $this->form->setCar());
+        $this->dispatch('set-type-edit', id: $this->form->type, data: $this->form->setType());
+
+
         $this->modalServiceEdit = true;
+    }
+
+
+    public function carChange()
+    {
+        $this->dispatch('set-type-edit', id: $this->form->type, data: $this->form->setType());
+
+        $this->resetErrorBag();
     }
 
     public function edit()
     {
 
         $this->validate();
-        $update = $this->form->update();
 
-        is_null($update) ? $this->dispatch('notify', title: 'success', message: 'Success')
-            : $this->dispatch('notify', title: 'error', message: 'Failed');
 
-        $this->dispatch('dispatch-service-create-edit')->to(ServiceTable::class);
+        try {
+
+            $this->form->update();
+            $this->dispatch('notify', title: 'success', message: 'Success');
+            $this->dispatch('dispatch-service-create-edit')->to(ServiceTable::class);
+
+
+        } catch (\Exception $e) {
+            $this->dispatch('notify', title: 'error', message: 'Failed');
+        }
+
+
     }
 
     public function render()

@@ -23,7 +23,7 @@ class ServiceForm extends Form
     public $car;
 
 
-    #[Validate('required', as: 'Type')]
+    #[Validate('', as: 'Type')]
     public $type;
 
     public function setService(Service $service): void

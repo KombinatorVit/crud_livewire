@@ -26,14 +26,20 @@ class ServiceDelete extends Component
 
     public function delete( $id)
     {
-       $del =  Service::destroy($this->id);
 
-       ($del) ? $this->dispatch('notify', title: 'success', message: 'Success')
-            : $this->dispatch('notify', title: 'error', message: 'Failed');
 
-        $this->dispatch('dispatch-service-create-delete')->to(ServiceTable::class);
+        try {
+             Service::destroy($this->id);
+            $this->dispatch('notify', title: 'success', message: 'Success');
+            $this->modalServiceDelete = false;
 
-        $this->modalServiceDelete = false;
+            $this->dispatch('dispatch-service-create-delete')->to(ServiceTable::class);
+
+        } catch (\Exception $e) {
+            $this->dispatch('notify', title: 'error', message: 'Failed');
+        }
+
+
     }
 
 

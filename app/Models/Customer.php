@@ -20,4 +20,10 @@ class Customer extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+
+    public function reward() :HasMany
+    {
+        return $this->hasMany(Reward::class);
+    }
 }

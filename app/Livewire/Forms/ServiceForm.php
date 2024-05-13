@@ -31,10 +31,11 @@ class ServiceForm extends Form
         $this->service = $service;
 
         $this->id = $service->id;
+//        dd($service);
 
         $this->customer = $service->customer->id;
-        $this->car = $service->car->id;
-        $this->type = $service->car->type->id;
+        $this->car = $service->type->id;
+        $this->type = $service->type->car->id;
     }
 
     public function setCustomer(): array

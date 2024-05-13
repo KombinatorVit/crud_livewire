@@ -25,10 +25,6 @@ class CarSeeder extends Seeder
             ]
         );
 
-        Car::create(
-            [
-                'name' => 'Nissan',
-            ]
-        );
+
     }
 }

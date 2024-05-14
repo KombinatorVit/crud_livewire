@@ -54,7 +54,7 @@
                         }
                         );"
                         @set-car-edit.window="$el.car.addOption($event.detail.data)
-                                                $el.customer.addItem($event.detail.id)
+                                                $el.car.addItem($event.detail.id)
                         "
                         id="car-edit" class=" mt-1 w-full"
                         wire:change="carChange"
@@ -86,8 +86,7 @@
                         $el.types.clear();
                         $el.types.clearOptions();
                         $el.types.addOption($event.detail.data)
-                        $el.customer.addItem($event.detail.id)
-
+                        $el.types.addItem($event.detail.id)
                         "
                         id="type-edit" class=" mt-1 w-full"
                         wire:model="form.type"

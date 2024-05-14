@@ -18,7 +18,7 @@
                     <x-tom
                         x-init="$el.customer = new Tom($el,
                         {
-                     sortField: {
+                        sortField: {
 		                field: 'name',
                         direction: 'asc',
 
@@ -87,7 +87,10 @@
                         $el.types.clearOptions();
                         $el.types.addOption($event.detail.data)
                         "
-                        @set-reset.window="$el.types.clear(); $el.types.clearOptions();"
+                        @set-reset.window="
+                        $el.types.clear();
+                        $el.types.clearOptions();
+                        "
                         id="type-create" class=" mt-1 w-full"
                         wire:model="form.type"
                         autocomplete="type-create">

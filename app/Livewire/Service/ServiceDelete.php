@@ -26,8 +26,6 @@ class ServiceDelete extends Component
 
     public function delete( $id)
     {
-
-
         try {
              Service::destroy($this->id);
             $this->dispatch('notify', title: 'success', message: 'Success');

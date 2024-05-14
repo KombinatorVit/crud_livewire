@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+
+<div x-data="{ count: 0 }">
+    <button x-on:click="count++">Increment</button>
+
+    <span x-text="count"></span>
+
+
+    <div x-data="{ open: false }">
+        <button @click="open = ! open">Toggle</button>
+
+        <div x-show="open" @click.outside="open = false">Contents...</div>
+    </div>
+
+
+</div>
+
+
+<div
+    x-data="{
+        search: '',
+
+        items: ['foo', 'bar', 'baz'],
+
+        get filteredItems() {
+            return this.items.filter(
+                i => i.startsWith(this.search)
+            )
+        },
+
+    }"
+>
+    <input x-model="search" placeholder="Search...">
+
+    <ul>
+        <template x-for="item in filteredItems" :key="item">
+            <li x-text="item"></li>
+        </template>
+    </ul>
+</div>
+
+
+<div x-data  @foo="console.log('foo was dispatched')">
+    <button @click="$dispatch('foo')"> ваыапавыпп </button>
+</div>
+
+
+<div x-data >
+    <button @click="$dispatch('foo')"></button>
+</div>
+
+<div x-data @foo.window="console.log('foo was dispatched')">...</div>
+
+
+<div x-data @foo="alert('Button Was Clicked!')">
+    <button @click="$event.target.dispatchEvent(new CustomEvent('foo', { bubbles: true }))">...</button>
+</div>
+
+
+<div x-data="{ label: 'Hello' }" x-effect="console.log(label)">
+    <button @click="label += ' World!'">Change Message</button>
+</div>
+
+
+
+<div x-data="{ title: 'Hello' }">
+    <button
+        @click="
+            title = 'Hello World!';
+            $nextTick(() => { console.log($el.innerText) });
+        "
+        x-text="title"
+    ></button>
+</div>
+
+</body>
+</html>

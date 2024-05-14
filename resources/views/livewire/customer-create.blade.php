@@ -4,6 +4,10 @@
         {{ __('Create Customer') }}
     </x-button>
 
+{{--    <x-button wire:click="set('modalCustomerCreate', true)">--}}
+{{--        {{ __('Create Customer') }}--}}
+{{--    </x-button>--}}
+
 
     <x-dialog-modal wire:model.live="modalCustomerCreate" submit="save">
         <x-slot name="title">

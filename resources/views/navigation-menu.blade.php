@@ -26,6 +26,16 @@
 
                         {{ __('Service') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('counter.index') }}" wire:navigate
+                                :active="request()->routeIs('counter.index')">
+
+                        {{ __('Counter') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('posts.index') }}" wire:navigate
+                                :active="request()->routeIs('posts.index')">
+
+                        {{ __('Posts') }}
+                    </x-nav-link>
 
                 </div>
             </div>
@@ -178,6 +188,17 @@
                                    :active="request()->routeIs('service.index')">
 
                 {{ __('Service') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('counter.index') }}" wire:navigate
+                                   :active="request()->routeIs('counter.index')">
+
+                {{ __('Counter') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('posts.index') }}" wire:navigate
+                                   :active="request()->routeIs('posts.index')">
+
+                {{ __('Posts') }}
             </x-responsive-nav-link>
         </div>
 

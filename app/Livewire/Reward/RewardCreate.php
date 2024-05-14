@@ -2,16 +2,16 @@
 
 namespace App\Livewire\Reward;
 
-use App\Livewire\CustomerTable;
-use App\Livewire\Forms\CustomerForm;
+
+use App\Livewire\Forms\RewardForm;
 use Livewire\Component;
 
 class RewardCreate extends Component
 {
 
-    public CustomerForm $form;
+    public RewardForm $form;
 
-    public $modalCustomerCreate = false;
+    public $modalRewardCreate = false;
 
     public function save()
     {
@@ -22,7 +22,7 @@ class RewardCreate extends Component
         is_null($checkForm) ? $this->dispatch('notify', title: 'success', message: 'Success')
             : $this->dispatch('notify', title: 'error', message: 'Failed');
 
-        $this->dispatch('dispatch-customer-create-save')->to(CustomerTable::class);
+        $this->dispatch('dispatch-reward-create-save')->to(RewardTable::class);
 
 
     }
@@ -32,6 +32,8 @@ class RewardCreate extends Component
 
     public function render()
     {
-        return view('livewire.customer-create');
+        return view('livewire.reward.reward-create', [
+            'customers' => \App\Models\Customer::all(),
+        ]);
     }
 }

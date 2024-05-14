@@ -26,6 +26,14 @@
 
                         {{ __('Service') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('reward.index') }}" wire:navigate
+                                :active="request()->routeIs('reward.index')">
+
+                        {{ __('Reward') }}
+                    </x-nav-link>
+
+
                     <x-nav-link href="{{ route('counter.index') }}" wire:navigate
                                 :active="request()->routeIs('counter.index')">
 
@@ -102,7 +110,7 @@
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button
-                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover"
                                          src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"/>
                                 </button>
@@ -188,6 +196,12 @@
                                    :active="request()->routeIs('service.index')">
 
                 {{ __('Service') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('reward.index') }}" wire:navigate
+                                   :active="request()->routeIs('reward.index')">
+
+                {{ __('Reward') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link href="{{ route('counter.index') }}" wire:navigate

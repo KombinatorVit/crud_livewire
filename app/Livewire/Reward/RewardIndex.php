@@ -10,9 +10,9 @@ class RewardIndex extends Component
 {
 
 
-    #[Title('Customers')]
+    #[Title('Reward')]
     public function render() : View
     {
-        return view('livewire.customer-index');
+        return view('livewire.reward.reward-index');
     }
 }

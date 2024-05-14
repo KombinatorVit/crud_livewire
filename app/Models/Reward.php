@@ -15,6 +15,7 @@ class Reward extends Model
         'month',
         'year',
         'name',
+
     ];
 
     public function customer(): BelongsTo
